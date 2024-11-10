@@ -362,34 +362,58 @@ export interface AdminTransferTokenPermission extends Schema.CollectionType {
   };
 }
 
-export interface ApiGroupGroup extends Schema.CollectionType {
-  collectionName: 'groups';
+export interface ApiEntrenamientoEntrenamiento extends Schema.CollectionType {
+  collectionName: 'entrenamientos';
   info: {
-    singularName: 'group';
-    pluralName: 'groups';
-    displayName: 'Groups';
+    singularName: 'entrenamiento';
+    pluralName: 'entrenamientos';
+    displayName: 'Entrenamiento';
+    description: '';
   };
   options: {
     draftAndPublish: true;
   };
   attributes: {
-    name: Attribute.String;
-    people: Attribute.Relation<
-      'api::group.group',
-      'oneToMany',
-      'api::person.person'
+    Nombre: Attribute.String;
+    Descripcion: Attribute.Text;
+    FechaHora: Attribute.DateTime;
+    Latitud: Attribute.Float;
+    Longitud: Attribute.Float;
+    TipoEntrenamiento: Attribute.Enumeration<
+      [
+        'Fuerza',
+        'Resistencia',
+        'Velocidad',
+        'Habilidad',
+        'Mecanica',
+        'Tecnica',
+        'Flexibilidad',
+        'Coordinacion',
+        'Potencia'
+      ]
     >;
+    jugadores: Attribute.Relation<
+      'api::entrenamiento.entrenamiento',
+      'manyToMany',
+      'api::usuario.usuario'
+    >;
+    entrenador: Attribute.Relation<
+      'api::entrenamiento.entrenamiento',
+      'oneToOne',
+      'api::usuario.usuario'
+    >;
+    Confirmaciones: Attribute.JSON;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
-      'api::group.group',
+      'api::entrenamiento.entrenamiento',
       'oneToOne',
       'admin::user'
     > &
       Attribute.Private;
     updatedBy: Attribute.Relation<
-      'api::group.group',
+      'api::entrenamiento.entrenamiento',
       'oneToOne',
       'admin::user'
     > &
@@ -397,44 +421,43 @@ export interface ApiGroupGroup extends Schema.CollectionType {
   };
 }
 
-export interface ApiPersonPerson extends Schema.CollectionType {
-  collectionName: 'people';
+export interface ApiUsuarioUsuario extends Schema.CollectionType {
+  collectionName: 'usuarios';
   info: {
-    singularName: 'person';
-    pluralName: 'people';
-    displayName: 'People';
-    description: '';
+    singularName: 'usuario';
+    pluralName: 'usuarios';
+    displayName: 'Usuario';
   };
   options: {
     draftAndPublish: true;
   };
   attributes: {
-    name: Attribute.String;
-    surname: Attribute.String;
-    email: Attribute.Email;
-    gender: Attribute.Enumeration<['female', 'male', 'other']>;
-    birthday: Attribute.Date;
-    group: Attribute.Relation<
-      'api::person.person',
-      'manyToOne',
-      'api::group.group'
+    Nombre: Attribute.String;
+    Apellidos: Attribute.String;
+    Email: Attribute.Email;
+    Rol: Attribute.Enumeration<['jugador', 'entrenador', 'gestor']>;
+    ImagenPerfil: Attribute.Media;
+    entrenamientos: Attribute.Relation<
+      'api::usuario.usuario',
+      'manyToMany',
+      'api::entrenamiento.entrenamiento'
     >;
-    user: Attribute.Relation<
-      'api::person.person',
+    entrenamientosAsignadoss: Attribute.Relation<
+      'api::usuario.usuario',
       'oneToOne',
-      'plugin::users-permissions.user'
+      'api::entrenamiento.entrenamiento'
     >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
-      'api::person.person',
+      'api::usuario.usuario',
       'oneToOne',
       'admin::user'
     > &
       Attribute.Private;
     updatedBy: Attribute.Relation<
-      'api::person.person',
+      'api::usuario.usuario',
       'oneToOne',
       'admin::user'
     > &
@@ -740,11 +763,6 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
       'manyToOne',
       'plugin::users-permissions.role'
     >;
-    person: Attribute.Relation<
-      'plugin::users-permissions.user',
-      'oneToOne',
-      'api::person.person'
-    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -772,8 +790,8 @@ declare module '@strapi/types' {
       'admin::api-token-permission': AdminApiTokenPermission;
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
-      'api::group.group': ApiGroupGroup;
-      'api::person.person': ApiPersonPerson;
+      'api::entrenamiento.entrenamiento': ApiEntrenamientoEntrenamiento;
+      'api::usuario.usuario': ApiUsuarioUsuario;
       'plugin::upload.file': PluginUploadFile;
       'plugin::upload.folder': PluginUploadFolder;
       'plugin::i18n.locale': PluginI18NLocale;

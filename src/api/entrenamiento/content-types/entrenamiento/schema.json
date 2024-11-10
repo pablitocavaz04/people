@@ -1,0 +1,60 @@
+{
+  "kind": "collectionType",
+  "collectionName": "entrenamientos",
+  "info": {
+    "singularName": "entrenamiento",
+    "pluralName": "entrenamientos",
+    "displayName": "Entrenamiento",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Nombre": {
+      "type": "string"
+    },
+    "Descripcion": {
+      "type": "text"
+    },
+    "FechaHora": {
+      "type": "datetime"
+    },
+    "Latitud": {
+      "type": "float"
+    },
+    "Longitud": {
+      "type": "float"
+    },
+    "TipoEntrenamiento": {
+      "type": "enumeration",
+      "enum": [
+        "Fuerza",
+        "Resistencia",
+        "Velocidad",
+        "Habilidad",
+        "Mecanica",
+        "Tecnica",
+        "Flexibilidad",
+        "Coordinacion",
+        "Potencia"
+      ]
+    },
+    "jugadores": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::usuario.usuario",
+      "inversedBy": "entrenamientos"
+    },
+    "entrenador": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::usuario.usuario",
+      "inversedBy": "entrenamientosAsignadoss"
+    },
+    "Confirmaciones": {
+      "type": "json"
+    }
+  }
+}
