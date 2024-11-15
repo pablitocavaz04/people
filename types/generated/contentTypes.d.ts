@@ -403,6 +403,7 @@ export interface ApiEntrenamientoEntrenamiento extends Schema.CollectionType {
       'api::usuario.usuario'
     >;
     Confirmaciones: Attribute.JSON;
+    ImagenEntreno: Attribute.Media;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
