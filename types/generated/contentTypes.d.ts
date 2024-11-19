@@ -392,17 +392,27 @@ export interface ApiEntrenamientoEntrenamiento extends Schema.CollectionType {
         'Potencia'
       ]
     >;
-    jugadores: Attribute.Relation<
+    Confirmaciones: Attribute.JSON;
+    gestor: Attribute.Relation<
+      'api::entrenamiento.entrenamiento',
+      'manyToOne',
+      'api::usuario.usuario'
+    >;
+    sesiones: Attribute.Relation<
+      'api::entrenamiento.entrenamiento',
+      'oneToMany',
+      'api::sesion.sesion'
+    >;
+    jugadoresAsitentes: Attribute.Relation<
       'api::entrenamiento.entrenamiento',
       'manyToMany',
       'api::usuario.usuario'
     >;
-    entrenador: Attribute.Relation<
+    entrenadores: Attribute.Relation<
       'api::entrenamiento.entrenamiento',
-      'oneToOne',
+      'manyToMany',
       'api::usuario.usuario'
     >;
-    Confirmaciones: Attribute.JSON;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -414,6 +424,53 @@ export interface ApiEntrenamientoEntrenamiento extends Schema.CollectionType {
       Attribute.Private;
     updatedBy: Attribute.Relation<
       'api::entrenamiento.entrenamiento',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiSesionSesion extends Schema.CollectionType {
+  collectionName: 'sesiones';
+  info: {
+    singularName: 'sesion';
+    pluralName: 'sesiones';
+    displayName: 'Sesiones';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    Nombre: Attribute.String;
+    Notas: Attribute.String;
+    entrenamiento: Attribute.Relation<
+      'api::sesion.sesion',
+      'manyToOne',
+      'api::entrenamiento.entrenamiento'
+    >;
+    entrenadores: Attribute.Relation<
+      'api::sesion.sesion',
+      'manyToMany',
+      'api::usuario.usuario'
+    >;
+    jugadores: Attribute.Relation<
+      'api::sesion.sesion',
+      'manyToMany',
+      'api::usuario.usuario'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::sesion.sesion',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::sesion.sesion',
       'oneToOne',
       'admin::user'
     > &
@@ -439,13 +496,28 @@ export interface ApiUsuarioUsuario extends Schema.CollectionType {
     ImagenPerfil: Attribute.Media;
     entrenamientos: Attribute.Relation<
       'api::usuario.usuario',
+      'oneToMany',
+      'api::entrenamiento.entrenamiento'
+    >;
+    entrenamientosConfirmados: Attribute.Relation<
+      'api::usuario.usuario',
       'manyToMany',
       'api::entrenamiento.entrenamiento'
     >;
-    entrenamientosAsignadoss: Attribute.Relation<
+    entrenamientosVisto: Attribute.Relation<
       'api::usuario.usuario',
-      'oneToOne',
+      'manyToMany',
       'api::entrenamiento.entrenamiento'
+    >;
+    sesionesAsignadas: Attribute.Relation<
+      'api::usuario.usuario',
+      'manyToMany',
+      'api::sesion.sesion'
+    >;
+    sesionesParticipadas: Attribute.Relation<
+      'api::usuario.usuario',
+      'manyToMany',
+      'api::sesion.sesion'
     >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
@@ -791,6 +863,7 @@ declare module '@strapi/types' {
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'api::entrenamiento.entrenamiento': ApiEntrenamientoEntrenamiento;
+      'api::sesion.sesion': ApiSesionSesion;
       'api::usuario.usuario': ApiUsuarioUsuario;
       'plugin::upload.file': PluginUploadFile;
       'plugin::upload.folder': PluginUploadFolder;

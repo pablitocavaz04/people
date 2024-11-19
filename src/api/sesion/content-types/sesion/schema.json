@@ -1,0 +1,40 @@
+{
+  "kind": "collectionType",
+  "collectionName": "sesiones",
+  "info": {
+    "singularName": "sesion",
+    "pluralName": "sesiones",
+    "displayName": "Sesiones",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Nombre": {
+      "type": "string"
+    },
+    "Notas": {
+      "type": "string"
+    },
+    "entrenamiento": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::entrenamiento.entrenamiento",
+      "inversedBy": "sesiones"
+    },
+    "entrenadores": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::usuario.usuario",
+      "inversedBy": "sesionesAsignadas"
+    },
+    "jugadores": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::usuario.usuario",
+      "inversedBy": "sesionesParticipadas"
+    }
+  }
+}

@@ -41,20 +41,32 @@
         "Potencia"
       ]
     },
-    "jugadores": {
+    "Confirmaciones": {
+      "type": "json"
+    },
+    "gestor": {
       "type": "relation",
-      "relation": "manyToMany",
+      "relation": "manyToOne",
       "target": "api::usuario.usuario",
       "inversedBy": "entrenamientos"
     },
-    "entrenador": {
+    "sesiones": {
       "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::usuario.usuario",
-      "inversedBy": "entrenamientosAsignadoss"
+      "relation": "oneToMany",
+      "target": "api::sesion.sesion",
+      "mappedBy": "entrenamiento"
     },
-    "Confirmaciones": {
-      "type": "json"
+    "jugadoresAsitentes": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::usuario.usuario",
+      "inversedBy": "entrenamientosConfirmados"
+    },
+    "entrenadores": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::usuario.usuario",
+      "inversedBy": "entrenamientosVisto"
     }
   }
 }

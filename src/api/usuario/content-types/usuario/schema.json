@@ -40,15 +40,33 @@
     },
     "entrenamientos": {
       "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::entrenamiento.entrenamiento",
+      "mappedBy": "gestor"
+    },
+    "entrenamientosConfirmados": {
+      "type": "relation",
       "relation": "manyToMany",
       "target": "api::entrenamiento.entrenamiento",
-      "mappedBy": "jugadores"
+      "mappedBy": "jugadoresAsitentes"
     },
-    "entrenamientosAsignadoss": {
+    "entrenamientosVisto": {
       "type": "relation",
-      "relation": "oneToOne",
+      "relation": "manyToMany",
       "target": "api::entrenamiento.entrenamiento",
-      "mappedBy": "entrenador"
+      "mappedBy": "entrenadores"
+    },
+    "sesionesAsignadas": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::sesion.sesion",
+      "mappedBy": "entrenadores"
+    },
+    "sesionesParticipadas": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::sesion.sesion",
+      "mappedBy": "jugadores"
     }
   }
 }
