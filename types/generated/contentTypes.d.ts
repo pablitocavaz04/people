@@ -485,6 +485,7 @@ export interface ApiUsuarioUsuario extends Schema.CollectionType {
     singularName: 'usuario';
     pluralName: 'usuarios';
     displayName: 'Usuario';
+    description: '';
   };
   options: {
     draftAndPublish: true;
@@ -520,6 +521,7 @@ export interface ApiUsuarioUsuario extends Schema.CollectionType {
       'manyToMany',
       'api::sesion.sesion'
     >;
+    pass: Attribute.Password;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
