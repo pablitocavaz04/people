@@ -56,6 +56,7 @@
       "target": "api::sesion.sesion",
       "mappedBy": "entrenamiento"
     },
+<<<<<<< HEAD
     "jugadoresAsitentes": {
       "type": "relation",
       "relation": "manyToMany",
@@ -67,6 +68,20 @@
       "relation": "manyToMany",
       "target": "api::usuario.usuario",
       "inversedBy": "entrenamientosVisto"
+=======
+    "Confirmaciones": {
+      "type": "json"
+    },
+    "ImagenEntreno": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false
+>>>>>>> d913d93671a079ec3fa658ed993579fead6e9fbf
     }
   }
 }

@@ -413,6 +413,11 @@ export interface ApiEntrenamientoEntrenamiento extends Schema.CollectionType {
       'manyToMany',
       'api::usuario.usuario'
     >;
+<<<<<<< HEAD
+=======
+    Confirmaciones: Attribute.JSON;
+    ImagenEntreno: Attribute.Media;
+>>>>>>> d913d93671a079ec3fa658ed993579fead6e9fbf
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
