@@ -4,7 +4,7 @@
   "info": {
     "singularName": "entrenamiento",
     "pluralName": "entrenamientos",
-    "displayName": "Entrenamiento",
+    "displayName": "Entrenamientos",
     "description": ""
   },
   "options": {
@@ -12,63 +12,25 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "Nombre": {
+    "nombre": {
       "type": "string"
     },
-    "Descripcion": {
+    "descripcion": {
       "type": "text"
     },
-    "FechaHora": {
-      "type": "datetime"
+    "fecha": {
+      "type": "date"
     },
-    "Latitud": {
-      "type": "float"
+    "duracion": {
+      "type": "integer"
     },
-    "Longitud": {
-      "type": "float"
-    },
-    "TipoEntrenamiento": {
-      "type": "enumeration",
-      "enum": [
-        "Fuerza",
-        "Resistencia",
-        "Velocidad",
-        "Habilidad",
-        "Mecanica",
-        "Tecnica",
-        "Flexibilidad",
-        "Coordinacion",
-        "Potencia"
-      ]
-    },
-    "Confirmaciones": {
-      "type": "json"
-    },
-    "gestor": {
+    "persona": {
       "type": "relation",
       "relation": "manyToOne",
-      "target": "api::usuario.usuario",
+      "target": "api::persona.persona",
       "inversedBy": "entrenamientos"
     },
-    "sesiones": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::sesion.sesion",
-      "mappedBy": "entrenamiento"
-    },
-    "jugadoresAsitentes": {
-      "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::usuario.usuario",
-      "inversedBy": "entrenamientosConfirmados"
-    },
-    "entrenadores": {
-      "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::usuario.usuario",
-      "inversedBy": "entrenamientosVisto"
-    },
-    "ImagenEntreno": {
+    "entreno": {
       "allowedTypes": [
         "images",
         "files",

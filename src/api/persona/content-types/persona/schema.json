@@ -1,0 +1,51 @@
+{
+  "kind": "collectionType",
+  "collectionName": "personas",
+  "info": {
+    "singularName": "persona",
+    "pluralName": "personas",
+    "displayName": "Personas"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Rol": {
+      "type": "enumeration",
+      "enum": [
+        "Jugador",
+        "Entrenador",
+        "Gestor"
+      ]
+    },
+    "Foto": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false
+    },
+    "user": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "persona"
+    },
+    "entrenamientos": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::entrenamiento.entrenamiento",
+      "mappedBy": "persona"
+    },
+    "sesiones": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::sesion.sesion",
+      "mappedBy": "personas"
+    }
+  }
+}

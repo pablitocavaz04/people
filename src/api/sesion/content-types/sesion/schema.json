@@ -4,37 +4,30 @@
   "info": {
     "singularName": "sesion",
     "pluralName": "sesiones",
-    "displayName": "Sesiones",
-    "description": ""
+    "displayName": "Sesiones"
   },
   "options": {
     "draftAndPublish": true
   },
   "pluginOptions": {},
   "attributes": {
-    "Nombre": {
+    "nombre": {
       "type": "string"
     },
-    "Notas": {
-      "type": "string"
+    "descripcion": {
+      "type": "text"
     },
-    "entrenamiento": {
+    "persona": {
       "type": "relation",
       "relation": "manyToOne",
-      "target": "api::entrenamiento.entrenamiento",
+      "target": "api::persona.persona",
       "inversedBy": "sesiones"
     },
-    "entrenadores": {
+    "personas": {
       "type": "relation",
       "relation": "manyToMany",
-      "target": "api::usuario.usuario",
-      "inversedBy": "sesionesAsignadas"
-    },
-    "jugadores": {
-      "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::usuario.usuario",
-      "inversedBy": "sesionesParticipadas"
+      "target": "api::persona.persona",
+      "inversedBy": "sesiones"
     }
   }
 }
