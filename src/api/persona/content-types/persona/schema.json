@@ -4,7 +4,8 @@
   "info": {
     "singularName": "persona",
     "pluralName": "personas",
-    "displayName": "Personas"
+    "displayName": "Personas",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -18,16 +19,6 @@
         "Entrenador",
         "Gestor"
       ]
-    },
-    "Foto": {
-      "allowedTypes": [
-        "images",
-        "files",
-        "videos",
-        "audios"
-      ],
-      "type": "media",
-      "multiple": false
     },
     "user": {
       "type": "relation",

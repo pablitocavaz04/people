@@ -408,13 +408,13 @@ export interface ApiPersonaPersona extends Schema.CollectionType {
     singularName: 'persona';
     pluralName: 'personas';
     displayName: 'Personas';
+    description: '';
   };
   options: {
     draftAndPublish: true;
   };
   attributes: {
     Rol: Attribute.Enumeration<['Jugador', 'Entrenador', 'Gestor']>;
-    Foto: Attribute.Media;
     user: Attribute.Relation<
       'api::persona.persona',
       'oneToOne',
