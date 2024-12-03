@@ -39,6 +39,12 @@
       ],
       "type": "media",
       "multiple": false
+    },
+    "sesiones": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::sesion.sesion",
+      "mappedBy": "entrenamiento"
     }
   }
 }

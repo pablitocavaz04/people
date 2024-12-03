@@ -4,7 +4,8 @@
   "info": {
     "singularName": "sesion",
     "pluralName": "sesiones",
-    "displayName": "Sesiones"
+    "displayName": "Sesiones",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -27,6 +28,12 @@
       "type": "relation",
       "relation": "manyToMany",
       "target": "api::persona.persona",
+      "inversedBy": "sesiones"
+    },
+    "entrenamiento": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::entrenamiento.entrenamiento",
       "inversedBy": "sesiones"
     }
   }
