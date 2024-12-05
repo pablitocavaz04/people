@@ -384,6 +384,11 @@ export interface ApiEntrenamientoEntrenamiento extends Schema.CollectionType {
       'api::persona.persona'
     >;
     entreno: Attribute.Media;
+    sesione: Attribute.Relation<
+      'api::entrenamiento.entrenamiento',
+      'oneToOne',
+      'api::sesion.sesion'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -430,6 +435,11 @@ export interface ApiPersonaPersona extends Schema.CollectionType {
       'manyToMany',
       'api::sesion.sesion'
     >;
+    sesione: Attribute.Relation<
+      'api::persona.persona',
+      'oneToOne',
+      'api::sesion.sesion'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -454,22 +464,28 @@ export interface ApiSesionSesion extends Schema.CollectionType {
     singularName: 'sesion';
     pluralName: 'sesiones';
     displayName: 'Sesiones';
+    description: '';
   };
   options: {
     draftAndPublish: true;
   };
   attributes: {
     nombre: Attribute.String;
-    descripcion: Attribute.Text;
-    persona: Attribute.Relation<
-      'api::sesion.sesion',
-      'manyToOne',
-      'api::persona.persona'
-    >;
-    personas: Attribute.Relation<
+    estado: Attribute.Boolean;
+    jugadores: Attribute.Relation<
       'api::sesion.sesion',
       'manyToMany',
       'api::persona.persona'
+    >;
+    entrenador: Attribute.Relation<
+      'api::sesion.sesion',
+      'oneToOne',
+      'api::persona.persona'
+    >;
+    entrenamiento: Attribute.Relation<
+      'api::sesion.sesion',
+      'oneToOne',
+      'api::entrenamiento.entrenamiento'
     >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;

@@ -15,26 +15,26 @@
     "nombre": {
       "type": "string"
     },
-    "descripcion": {
-      "type": "text"
+    "estado": {
+      "type": "boolean"
     },
-    "persona": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::persona.persona",
-      "inversedBy": "sesiones"
-    },
-    "personas": {
+    "jugadores": {
       "type": "relation",
       "relation": "manyToMany",
       "target": "api::persona.persona",
       "inversedBy": "sesiones"
     },
+    "entrenador": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::persona.persona",
+      "inversedBy": "sesione"
+    },
     "entrenamiento": {
       "type": "relation",
-      "relation": "manyToOne",
+      "relation": "oneToOne",
       "target": "api::entrenamiento.entrenamiento",
-      "inversedBy": "sesiones"
+      "inversedBy": "sesione"
     }
   }
 }

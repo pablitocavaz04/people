@@ -40,9 +40,9 @@
       "type": "media",
       "multiple": false
     },
-    "sesiones": {
+    "sesione": {
       "type": "relation",
-      "relation": "oneToMany",
+      "relation": "oneToOne",
       "target": "api::sesion.sesion",
       "mappedBy": "entrenamiento"
     }

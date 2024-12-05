@@ -36,7 +36,13 @@
       "type": "relation",
       "relation": "manyToMany",
       "target": "api::sesion.sesion",
-      "mappedBy": "personas"
+      "mappedBy": "jugadores"
+    },
+    "sesione": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::sesion.sesion",
+      "mappedBy": "entrenador"
     }
   }
 }
