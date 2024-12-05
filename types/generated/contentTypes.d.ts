@@ -377,7 +377,6 @@ export interface ApiEntrenamientoEntrenamiento extends Schema.CollectionType {
     nombre: Attribute.String;
     descripcion: Attribute.Text;
     fecha: Attribute.Date;
-    duracion: Attribute.Integer;
     persona: Attribute.Relation<
       'api::entrenamiento.entrenamiento',
       'manyToOne',

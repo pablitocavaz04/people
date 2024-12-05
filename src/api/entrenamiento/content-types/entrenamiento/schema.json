@@ -21,9 +21,6 @@
     "fecha": {
       "type": "date"
     },
-    "duracion": {
-      "type": "integer"
-    },
     "persona": {
       "type": "relation",
       "relation": "manyToOne",
@@ -31,14 +28,15 @@
       "inversedBy": "entrenamientos"
     },
     "entreno": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
       "allowedTypes": [
         "images",
         "files",
         "videos",
         "audios"
-      ],
-      "type": "media",
-      "multiple": false
+      ]
     },
     "sesione": {
       "type": "relation",
