@@ -436,7 +436,7 @@ export interface ApiPersonaPersona extends Schema.CollectionType {
     >;
     sesione: Attribute.Relation<
       'api::persona.persona',
-      'oneToOne',
+      'oneToMany',
       'api::sesion.sesion'
     >;
     createdAt: Attribute.DateTime;
@@ -478,7 +478,7 @@ export interface ApiSesionSesion extends Schema.CollectionType {
     >;
     entrenador: Attribute.Relation<
       'api::sesion.sesion',
-      'oneToOne',
+      'manyToOne',
       'api::persona.persona'
     >;
     entrenamiento: Attribute.Relation<

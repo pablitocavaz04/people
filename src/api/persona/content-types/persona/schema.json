@@ -40,7 +40,7 @@
     },
     "sesione": {
       "type": "relation",
-      "relation": "oneToOne",
+      "relation": "oneToMany",
       "target": "api::sesion.sesion",
       "mappedBy": "entrenador"
     }

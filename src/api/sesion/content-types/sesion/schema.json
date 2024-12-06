@@ -26,7 +26,7 @@
     },
     "entrenador": {
       "type": "relation",
-      "relation": "oneToOne",
+      "relation": "manyToOne",
       "target": "api::persona.persona",
       "inversedBy": "sesione"
     },
