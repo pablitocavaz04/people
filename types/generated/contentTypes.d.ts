@@ -439,6 +439,7 @@ export interface ApiPersonaPersona extends Schema.CollectionType {
       'oneToMany',
       'api::sesion.sesion'
     >;
+    perfil: Attribute.Media;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
