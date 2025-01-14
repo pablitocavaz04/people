@@ -35,6 +35,16 @@
       "relation": "oneToOne",
       "target": "api::entrenamiento.entrenamiento",
       "inversedBy": "sesione"
+    },
+    "sesionpicture": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false
     }
   }
 }

@@ -487,6 +487,7 @@ export interface ApiSesionSesion extends Schema.CollectionType {
       'oneToOne',
       'api::entrenamiento.entrenamiento'
     >;
+    sesionpicture: Attribute.Media;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
