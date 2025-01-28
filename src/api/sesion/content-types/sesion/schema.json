@@ -37,14 +37,24 @@
       "inversedBy": "sesione"
     },
     "sesionpicture": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
       "allowedTypes": [
         "images",
         "files",
         "videos",
         "audios"
-      ],
-      "type": "media",
-      "multiple": false
+      ]
+    },
+    "direccion": {
+      "type": "string"
+    },
+    "latitud": {
+      "type": "float"
+    },
+    "longitud": {
+      "type": "float"
     }
   }
 }

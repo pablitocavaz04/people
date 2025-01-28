@@ -488,6 +488,9 @@ export interface ApiSesionSesion extends Schema.CollectionType {
       'api::entrenamiento.entrenamiento'
     >;
     sesionpicture: Attribute.Media;
+    direccion: Attribute.String;
+    latitud: Attribute.Float;
+    longitud: Attribute.Float;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
